@@ -1,8 +1,9 @@
-*{
+* {
   margin: 0;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

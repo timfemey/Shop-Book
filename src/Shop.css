@@ -1,0 +1,12 @@
+img {
+  height: 80%;
+}
+.start {
+  margin: 20%;
+}
+
+@media (min-width: 1024px) {
+  .start {
+    display: none;
+  }
+}

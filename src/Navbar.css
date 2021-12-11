@@ -1,0 +1,20 @@
+.name {
+  color: #030e12;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.name:hover {
+  color: #030e12;
+}
+
+.book {
+  color: #030e12;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .book {
+    display: none;
+  }
+}
