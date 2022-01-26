@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "./css/Footer.css";
 
 const Footer = () => {
   return (
@@ -35,11 +35,11 @@ const Footer = () => {
               <a
                 rel="noreferrer"
                 className="social-icon-link codepen"
-                href="https://codepen.io/timfemey"
+                href="https://www.instagram.com/tim_femey/"
                 target="_blank"
                 aria-label="Codepen"
               >
-                <i className="fab fa-codepen"></i>
+                <i className="fab fa-instagram"></i>
               </a>
             </div>
           </div>

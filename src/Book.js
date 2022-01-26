@@ -1,33 +1,74 @@
-import React from "react";
-import Shelf from "./Shelf";
-import steve from "./steve.jpg";
-import atomic from "./atomic.jpg";
-import zero from "./zero.jpg";
+import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
+
+import Shelf from "./components/Shelf";
 
 const Book = () => {
+  const [bookarr, boookSet] = useState([]);
+  const [second, secSet] = useState([]);
+  const arr = [
+    "programming",
+    "web",
+    "beginners",
+    "coding",
+    "professional",
+    "database",
+    "api",
+    "algorithm",
+  ];
+  let no = useRef(Math.floor(Math.random() * 8));
+  let no2 = useRef(Math.floor(Math.random() * 8));
+  useEffect(() => {
+    axios
+      .get(`https://api.itbook.store/1.0/search/${arr[no.current]}`)
+      .then((res) => {
+        console.log(res);
+        let book = res.data.books;
+        boookSet(book);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, [no.current]);
+
+  useEffect(() => {
+    axios
+      .get(`https://api.itbook.store/1.0/search/${arr[no2.current]}`)
+      .then((res) => {
+        var book = res.data.books;
+        secSet(book);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, [no2.current]);
+
+  const shelf = bookarr.map((lib, i) => (
+    <Shelf
+      key={i}
+      image={lib.image}
+      name={lib.title}
+      price={lib.price}
+      desc={lib.subtitile}
+      isbn={lib.isbn13}
+    />
+  ));
+  const shelf2 = second.map((lib, i) => (
+    <Shelf
+      key={i}
+      id={i}
+      image={lib.image}
+      name={lib.title}
+      price={lib.price}
+      desc={lib.subtitile}
+      isbn={lib.isbn13}
+    />
+  ));
   return (
-    <>
-      <Shelf
-        image={steve}
-        name="Steve Jobs"
-        price="$49.99"
-        desc="Understanding the Life of Steve Jobs"
-      />
-
-      <Shelf
-        image={zero}
-        name="Steve Jobs"
-        price="$40.99"
-        desc="Understanding the Life of Steve Jobs"
-      />
-
-      <Shelf
-        image={atomic}
-        name="Steve Jobs"
-        price="$39.99"
-        desc="Understanding the Life of Steve Jobs"
-      />
-    </>
+    <div className="row py-3">
+      {shelf}
+      {shelf2}
+    </div>
   );
 };
 

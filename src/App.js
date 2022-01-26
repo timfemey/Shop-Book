@@ -1,10 +1,9 @@
-import React from "react";
-import "./App.css";
-import Footer from "./Footer";
+import React, { lazy, Suspense } from "react";
 import Navbar from "./Navbar";
 import Shop from "./Shop";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Book from "./Book";
+import Cart from "./Cart";
+const Book = lazy(() => import("./Book"));
 
 function App() {
   return (
@@ -14,7 +13,13 @@ function App() {
 
         <Switch>
           <Route path="/" exact component={Shop} />
-          <Route path="/books" component={Book} />
+          <Suspense
+            fallback={<h2 style={{ textAlign: "center" }}>Loading...</h2>}
+          >
+            <Route path="/books" component={Book} />
+
+            <Route path="/cart" component={Cart} />
+          </Suspense>
         </Switch>
       </Router>
 
@@ -23,7 +28,6 @@ function App() {
       {/*Shop Body */}
       {/*<Shop />*/}
       {/*Footer */}
-      <Footer />
     </React.Fragment>
   );
 }

@@ -1,14 +1,32 @@
 import React from "react";
-import "./Navbar.css";
-import { Link } from "react-router-dom";
+import "./css/Navbar.css";
+import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const cart = useSelector((state) => state.total);
+  const section = useLocation();
+  let path;
+  switch (section.pathname) {
+    case "/cart":
+      path = "Cart";
+      break;
+
+    default:
+      path = "";
+      break;
+  }
+
   return (
     <React.Fragment>
-      <nav class="navbar navbar-expand-lg ">
+      <nav
+        id="container"
+        style={{ borderBottom: "1px solid #eee" }}
+        className="navbar navbar-expand-lg "
+      >
         <div class="container-fluid">
           <a class="navbar-brand name" href="/">
-            ShopBook
+            ShopBook {path}
           </a>
           <button
             class="navbar-toggler"
@@ -26,17 +44,18 @@ const Navbar = () => {
           </Link>
 
           <a
-            style={{ float: "left", fontSize: "1.8rem", color: "#030e12" }}
+            href="/cart"
+            style={{ float: "left", fontSize: "1.6rem", color: "#030e12" }}
             class="bi bi-cart"
           >
             <span
               style={{
-                fontSize: "1.7rem !important",
+                fontSize: "1.5rem !important",
                 marginTop: "0",
               }}
               class="badge bg-secondary"
             >
-              0
+              {cart}
             </span>
           </a>
         </div>

@@ -1,12 +1,13 @@
 import React from "react";
-import "./Shop.css";
+import "./css/Shop.css";
 import zero from "./zero.jpg";
 import steve from "./steve.jpg";
 import atomic from "./atomic.jpg";
+import Footer from "./Footer";
 const Shop = () => {
   return (
     <React.Fragment>
-      <div className="slide">
+      <div id="container" className="slide">
         <div
           id="carouselExampleCaptions"
           className="carousel slide"
@@ -38,24 +39,22 @@ const Shop = () => {
             <div className="carousel-item active">
               <img src={steve} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
-                <h5>Steve Jobs by Walter Isaacson</h5>
-                <p>Understanding one of the Great Minds of Technology.</p>
+                <h5>Pro Django</h5>
+                <p>Understanding Django.</p>
               </div>
             </div>
             <div className="carousel-item">
               <img src={zero} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
-                <h5>Zero to one by Peter Thiel</h5>
-                <p>Taking your Life to the Next Level</p>
+                <h5>Find Your Favourite IT Books</h5>
+                <p>Going from Zero to 100</p>
               </div>
             </div>
             <div className="carousel-item">
               <img src={atomic} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
-                <h5>Atomic Habits by Daniel Kahneman</h5>
-                <p>
-                  Building Great Habits you will need on the road to Success
-                </p>
+                <h5>Powered by ITStore API</h5>
+                <p>From Beginners to Professionals</p>
               </div>
             </div>
           </div>
@@ -96,6 +95,8 @@ const Shop = () => {
           </a>
         </center>
       </div>
+
+      <Footer />
     </React.Fragment>
   );
 };
