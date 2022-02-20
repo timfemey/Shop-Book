@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import Navbar from "./Navbar";
 import Shop from "./Shop";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Cart from "./Cart";
+const Cart = lazy(() => import("./Cart"));
 const Book = lazy(() => import("./Book"));
 
 function App() {
