@@ -6,6 +6,8 @@ import Shelf from "./components/Shelf";
 const Book = () => {
   const [bookarr, boookSet] = useState([]);
   const [second, secSet] = useState([]);
+  const [recommend, setRecommend] = useState(false);
+  const [foundBook, setFoundBook] = useState([]);
   const arr = [
     "programming",
     "web",
@@ -22,7 +24,6 @@ const Book = () => {
     axios
       .get(`https://api.itbook.store/1.0/search/${arr[no.current]}`)
       .then((res) => {
-        console.log(res);
         let book = res.data.books;
         boookSet(book);
       })
@@ -35,7 +36,7 @@ const Book = () => {
     axios
       .get(`https://api.itbook.store/1.0/search/${arr[no2.current]}`)
       .then((res) => {
-        var book = res.data.books;
+        let book = res.data.books;
         secSet(book);
       })
       .catch((err) => {
@@ -64,8 +65,68 @@ const Book = () => {
       isbn={lib.isbn13}
     />
   ));
+  function searchResults(bookname) {
+    axios
+      .get(`https://api.itbook.store/1.0/search/${bookname}`)
+      .then((res) => {
+        let book = res.data.books;
+        setFoundBook(book);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  function bookSearch(val) {
+    setRecommend(true);
+    let value = String(val).replace(".", "");
+    if (value.length <= 0) {
+      setRecommend(false);
+    } else {
+      searchResults(value);
+    }
+  }
+  let search =
+    foundBook.length <= 0
+      ? 100
+      : foundBook.map((lib, i) => (
+          <Shelf
+            key={i}
+            id={i}
+            image={lib.image}
+            name={lib.title}
+            price={lib.price}
+            desc={lib.subtitile}
+            isbn={lib.isbn13}
+          />
+        ));
   return (
     <div className="row py-3">
+      <center>
+        <h1>
+          Search <i style={{ fontSize: "2rem" }} className="bi bi-search"></i>
+          <input
+            className="mx-2 py-0"
+            type="text"
+            onChange={(event) => bookSearch(event.target.value)}
+          />
+        </h1>
+      </center>
+      <br />
+      {search === 100 ? (
+        <center>
+          <h3>Live Searching...</h3>
+        </center>
+      ) : (
+        search
+      )}
+      {recommend ? (
+        <center>
+          <h2>Recommended:</h2>
+        </center>
+      ) : (
+        " "
+      )}
+
       {shelf}
       {shelf2}
     </div>

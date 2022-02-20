@@ -28,7 +28,7 @@
   align-items: center;
   width: 90%;
   max-width: 1000px;
-  margin: 40px auto 0 auto;
+  margin: 17px auto 0 auto;
 }
 
 .social-icons {
@@ -55,7 +55,7 @@
 }
 
 .social-logo:hover {
-  color: #303179;
+  color: #fff;
 }
 
 .website-right {

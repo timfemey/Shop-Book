@@ -88,13 +88,18 @@ const Shop = () => {
         <center>
           <a
             href="/books"
-            style={{ background: "#030e12", color: "#fff" }}
+            style={{
+              background: "#030e12",
+              color: "#fff",
+            }}
             className="btn btn-block"
           >
             Checkout Books
           </a>
         </center>
       </div>
+      <br />
+      <br />
 
       <Footer />
     </React.Fragment>

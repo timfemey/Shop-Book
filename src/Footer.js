@@ -8,9 +8,15 @@ const Footer = () => {
         <section className="social-media">
           <div className="social-media-wrap">
             <div className="footer-logo">
-              <a className="social-logo">Ishola Obafemi</a>
+              <a
+                href="https://femiport.web.app"
+                className="social-logo"
+                target="_blank"
+              >
+                Ishola Obafemi
+              </a>
             </div>
-            <small className="website-right">&#169; 2021</small>
+            <small className="website-right">&#169; 2022</small>
             <div className="social-icons">
               <a
                 rel="noreferrer"
