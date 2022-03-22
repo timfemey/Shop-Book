@@ -1,5 +1,7 @@
 <h1>Shop Book</h1>
 {An Online Store for Buying IT Books and also getting Free Books} <br/>
+Fully Responsive
+Fast
 Written with React, Bootstrap, Redux and Node.js <br/>
 
 [![shopbook-min.gif](https://s1.gifyu.com/images/shopbook-min.gif)](https://gifyu.com/image/SpwGB)
